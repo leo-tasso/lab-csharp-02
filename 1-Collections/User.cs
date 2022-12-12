@@ -6,8 +6,12 @@ namespace Collections
     {
         public User(string fullName, string username, uint? age)
         {
-            throw new NotImplementedException("TODO ensure that username is not null");
-            throw new NotImplementedException("TODO initialise this instance of user accordingly");
+            if(!(fullName == null) && !(username == null))
+            {
+                Age = age;
+                FullName = fullName;
+                Username = username;
+            }
         }
         
         public uint? Age { get; }
@@ -16,8 +20,21 @@ namespace Collections
         
         public string Username { get; }
 
-        public bool IsAgeDefined => throw new NotImplementedException("TODO check whether age is non-null or not");
-        
-        // TODO implement missing methods (try to autonomously figure out which are the necessary methods)
+        public bool IsAgeDefined => Age.HasValue;
+
+        public override bool Equals(object obj)
+        {
+            return obj is User user &&
+                   Age == user.Age &&
+                   FullName == user.FullName &&
+                   Username == user.Username;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Age, FullName, Username);
+        }
+
+        public override string ToString() => $"{nameof(User)}({nameof(Age)}: {Age}, {nameof(FullName)}: {FullName}, {nameof(Username)}: {Username})";
     }
 }
