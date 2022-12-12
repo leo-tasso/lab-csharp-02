@@ -20,66 +20,35 @@ namespace ExtensionMethods
         }
 
         /// <inheritdoc cref="IComplex.Real"/>
-        public double Real
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public double Real => re;
 
         /// <inheritdoc cref="IComplex.Imaginary"/>
-        public double Imaginary
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public double Imaginary => im;
 
         /// <inheritdoc cref="IComplex.Modulus"/>
-        public double Modulus
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public double Modulus => Math.Sqrt(Real * Real + Imaginary * Imaginary);
 
         /// <inheritdoc cref="IComplex.Phase"/>
-        public double Phase
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public double Phase => Math.Atan2(Real, Imaginary);
 
         /// <inheritdoc cref="IComplex.ToString"/>
-        public override string ToString()
-        {
-            // TODO improve
-            return base.ToString();
-        }
+        public override string ToString() => $"{Real}+i{Imaginary}";
 
         /// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-        public bool Equals(IComplex other)
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool Equals(IComplex other) => (this.Imaginary == other.Imaginary && this.Real == other.Real);
 
         /// <inheritdoc cref="object.Equals(object?)"/>
         public override bool Equals(object obj)
         {
-            // TODO improve
-            return base.Equals(obj);
+            return obj is Complex complex &&
+                   Real == complex.Real &&
+                   Imaginary == complex.Imaginary;
         }
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            // TODO improve
-            return base.GetHashCode();
+            return HashCode.Combine(Real, Imaginary);
         }
     }
 }
