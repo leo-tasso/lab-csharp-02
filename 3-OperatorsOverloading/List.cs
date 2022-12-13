@@ -36,7 +36,7 @@ namespace OperatorsOverloading
         /// </summary>
         /// <param name="enumerable">the array of elements to put on the list.</param>
         /// <returns>a new list with the given elements.</returns>
-        public static implicit operator List<TValue>(TValue[] enumerable) => List.From<TValue>(enumerable);
+        public static implicit operator List<TValue>(TValue[] enumerable) => List.From(enumerable.AsEnumerable());
 
         /// <summary>
         /// Converts the given element into a new list implicitly.
@@ -82,10 +82,7 @@ namespace OperatorsOverloading
         /// <returns>
         /// <see langword="true"/> if the two source lists are not equal; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator !=(List<TValue> list1, List<TValue> list2)
-        {
-            return !(list1 == list2);
-        }
+        public static bool operator !=(List<TValue> list1, List<TValue> list2) => !(list1 == list2);
 
         /// <summary>
         /// Determines whether the <see cref="Length"/> of the <paramref name="list1"/> is greater or equal

@@ -30,10 +30,7 @@ namespace Collections
                    Username == user.Username;
         }
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Age, FullName, Username);
-        }
+        public override int GetHashCode() => HashCode.Combine(Age, FullName, Username);
 
         public override string ToString() => $"{nameof(User)}({nameof(Age)}: {Age}, {nameof(FullName)}: {FullName}, {nameof(Username)}: {Username})";
     }

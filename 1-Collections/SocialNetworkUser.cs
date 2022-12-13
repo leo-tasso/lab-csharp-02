@@ -19,16 +19,12 @@ namespace Collections
             return   followed[group].Add(user);
         }
 
-        public IList<TUser> FollowedUsers
-        {
-            get => followed.Values.SelectMany(x => x).ToList();
-            
-        }
+        public IList<TUser> FollowedUsers => followed.Values.SelectMany(x => x).ToList();
 
         public ICollection<TUser> GetFollowedUsersInGroup(string group)
         {
            if(followed.ContainsKey(group)) return followed[group].ToList();
-           else return new List<TUser>();
+           else return new HashSet<TUser>();
         }
     }
 }

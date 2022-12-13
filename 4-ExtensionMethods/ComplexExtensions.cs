@@ -37,7 +37,11 @@ namespace ExtensionMethods
         /// <param name="c1">the first operand.</param>
         /// <param name="c2">the second operand.</param>
         /// <returns>the quotient.</returns>
-        public static IComplex Divide(this IComplex c1, IComplex c2) => new Complex((c1.Real * c2.Real + c1.Imaginary * c2.Imaginary) / (c2.Real * c2.Real + c2.Imaginary * c2.Imaginary) , (c1.Imaginary * c2.Real - c1.Real * c2.Imaginary) / (c2.Real * c2.Real + c2.Imaginary * c2.Imaginary));
+        public static IComplex Divide(this IComplex c1, IComplex c2) =>
+            new Complex(
+                (c1.Real * c2.Real + c1.Imaginary * c2.Imaginary) / (c2.Real * c2.Real + c2.Imaginary * c2.Imaginary),
+                (c1.Imaginary * c2.Real - c1.Real * c2.Imaginary) / (c2.Real * c2.Real + c2.Imaginary * c2.Imaginary)
+            );
 
         /// <summary>
         /// Get the complex conjugate of a complex number.
